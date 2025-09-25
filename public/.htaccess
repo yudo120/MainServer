@@ -1,0 +1,9 @@
+Options -Indexes
+RewriteEngine On
+
+# Redirigir raíz a /admin
+RewriteRule ^$ admin/ [R=302,L]
+
+# Bloquear acceso a inc/ y api/ por URL directa
+RewriteRule ^admin/inc/ - [F,L]
+RewriteRule ^admin/api/ - [F,L]
