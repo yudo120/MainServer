@@ -1,54 +1,59 @@
 <?php
 require __DIR__ . '/inc/bootstrap.php';
 
-$logged = is_logged_in();
+$logged  = is_logged_in();
 $expired = isset($_GET['expired']);
+$err     = isset($_GET['err']);
+$last_user = $_SESSION['last_user'] ?? '';
+unset($_SESSION['last_user']); // solo se usa una vez
 
-if (!$logged) {
+if (!$logged):
     // Vista login
     ?>
     <!doctype html>
     <html lang="es">
-
     <head>
         <meta charset="utf-8">
-        <title>Login</title>
-        <link rel="stylesheet" href="/admin/assets/style.css">
+        <title>Panel • Login</title>
+        <link rel="stylesheet" href="/admin/assets/styles.css">
     </head>
-
     <body>
         <div class="card">
             <h1>Panel • Login</h1>
-            <?php if ($expired): ?>
-                <div class="alert">Sesión expirada</div><?php endif; ?>
+
             <form method="post" action="/admin/api/login.php">
                 <label>Usuario</label>
-                <input name="user" required>
+                <input name="user" value="<?php echo htmlspecialchars($last_user); ?>" required>
                 <label>Contraseña</label>
                 <input type="password" name="pass" required>
                 <input type="hidden" name="csrf" value="<?php echo htmlspecialchars(csrf_token()); ?>">
                 <button type="submit">Entrar</button>
             </form>
+
+            <?php if ($expired): ?>
+                <p class="msg-warning">⚠️ Sesión expirada</p>
+            <?php endif; ?>
+
+            <?php if ($err): ?>
+                <p class="msg-error">❌ Usuario o contraseña incorrectos</p>
+            <?php endif; ?>
         </div>
     </body>
-
     </html>
     <?php
     exit;
-}
+endif;
 
 // Vista dashboard
 ensure_logged_in();
 ?>
 <!doctype html>
 <html lang="es">
-
 <head>
     <meta charset="utf-8">
     <title>Panel</title>
-    <link rel="stylesheet" href="/admin/assets/style.css">
+    <link rel="stylesheet" href="/admin/assets/styles.css">
 </head>
-
 <body>
     <nav class="topbar">
         <strong>ServidorRasp</strong>
@@ -142,5 +147,4 @@ ensure_logged_in();
         });
     </script>
 </body>
-
 </html>

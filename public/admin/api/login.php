@@ -9,4 +9,8 @@ if (do_login($user, $pass)) {
     header('Location: /admin');
     exit;
 }
-header('Location: /admin?err=1');
+
+// Guardamos flag de error en sesión
+$_SESSION['login_error'] = '❌ Usuario o contraseña incorrectos';
+header('Location: /admin');
+exit;

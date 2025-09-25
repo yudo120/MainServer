@@ -1,9 +1,14 @@
 Options -Indexes
 RewriteEngine On
 
-# Redirigir raíz a /admin
-RewriteRule ^$ admin/ [R=302,L]
+# Redirigir raíz al home (ya no al admin)
+# RewriteRule ^$ admin/ [R=302,L]
 
-# Bloquear acceso a inc/ y api/ por URL directa
+# Permitir login y logout en API
+RewriteRule ^admin/api/(login|logout)\.php$ - [L]
+
+# Bloquear acceso directo a inc/
 RewriteRule ^admin/inc/ - [F,L]
+
+# Bloquear acceso directo al resto de api/
 RewriteRule ^admin/api/ - [F,L]

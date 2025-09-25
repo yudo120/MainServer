@@ -1,7 +1,10 @@
 <?php
+// make_password.php
 if ($argc < 2) {
-    fwrite(STDERR, "Uso: php make_password.php <password>\n");
+    echo "Uso: php make_password.php <contraseña>\n";
     exit(1);
 }
-$hash = password_hash($argv[1], PASSWORD_DEFAULT);
-echo "Hash generado:\n$hash\n";
+
+$pass = $argv[1];
+$hash = password_hash($pass, PASSWORD_DEFAULT);
+echo "Contraseña: $pass\nHash: $hash\n";
