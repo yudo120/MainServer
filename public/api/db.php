@@ -1,8 +1,13 @@
 <?php
-// Configuración de la base de datos SQLite
-$dbFile = '/tmp/users.sqlite';
-// Alternativa: usar directorio con permisos completos
-// $dbFile = __DIR__ . '/users.sqlite';
+// Configuración de la base de datos SQLite para Apache
+// Usar una ubicación accesible pero segura
+$dbFile = __DIR__ . '/users.sqlite';
+
+// Verificar que el directorio tenga permisos de escritura
+if (!is_writable(__DIR__)) {
+    // Si no tiene permisos, usar /tmp como fallback
+    $dbFile = '/tmp/users.sqlite';
+}
 
 $pdo = new PDO('sqlite:' . $dbFile);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

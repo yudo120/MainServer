@@ -1,10 +1,39 @@
 RewriteEngine On
 
-# Quita la extensión .html de la URL
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(servicios|tools|docs)/?$ pages/$1.html [L]
+# Habilitar módulos necesarios
+# LoadModule rewrite_module modules/mod_rewrite.so (esto debe estar en Apache config)
 
-# Opcional: redirige /pages/servicios.html a /pages/servicios
-RewriteCond %{THE_REQUEST} /pages/([a-zA-Z0-9_-]+)\.html [NC]
-RewriteRule ^pages/([a-zA-Z0-9_-]+)\.html$ /pages/$1 [R=301,L]
+# Evitar acceso directo a archivos sensibles
+<Files "*.sqlite">
+    Deny from all
+</Files>
+
+<Files "*.log">
+    Deny from all
+</Files>
+
+# Permitir acceso a archivos estáticos (CSS, JS, imágenes)
+RewriteCond %{REQUEST_URI} \.(css|js|png|jpg|jpeg|gif|ico|svg)$ [NC]
+RewriteRule . - [L]
+
+# Permitir acceso directo a la API
+RewriteCond %{REQUEST_URI} ^/api/ [NC]
+RewriteRule . - [L]
+
+# Redirigir todo lo demás al router.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ router.php [QSA,L]
+
+# Configuración de seguridad adicional
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options DENY
+    Header always set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# Configuración de tipos MIME
+<IfModule mod_mime.c>
+    AddType application/javascript .js
+    AddType text/css .css
+</IfModule>
