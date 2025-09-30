@@ -9,7 +9,6 @@
     <div class="container">
         <h1>Bienvenido a Rasp Server</h1>
         <p>Servidor en ejecución sobre Apache + PHP en tu Raspberry Pi.</p>
-        <a class="btn" href="/admin/">Ir al panel de administración</a>
     </div>
 </body>
 </html>
