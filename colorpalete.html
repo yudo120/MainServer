@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Paleta web minimalista</title>
+    <style>
+        :root {
+            --fondo: #0A0A0A;
+            --superficie: #2C2C2C;
+            --texto: #B0B0B0;
+            --texto-secundario: #808080;
+            --destacado: #E6E6E6;
+            --acento-azul: #6CAEDB;
+            --acento-cian: #4DD6D6;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, sans-serif;
+            background: var(--fondo);
+            color: var(--texto);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 32px;
+            gap: 24px;
+        }
+
+        header {
+            text-align: center
+        }
+
+        h1 {
+            margin: 0;
+            color: var(--destacado)
+        }
+
+        p {
+            margin: 8px 0 0;
+            color: var(--texto-secundario)
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .swatch {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #1a1a1a;
+        }
+
+        .chip {
+            height: 100px
+        }
+
+        .chip.fondo {
+            background: var(--fondo)
+        }
+
+        .chip.superficie {
+            background: var(--superficie)
+        }
+
+        .chip.texto {
+            background: var(--texto)
+        }
+
+        .chip.secundario {
+            background: var(--texto-secundario)
+        }
+
+        .chip.destacado {
+            background: var(--destacado)
+        }
+
+        .chip.azul {
+            background: var(--acento-azul)
+        }
+
+        .chip.cian {
+            background: var(--acento-cian)
+        }
+
+        .meta {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 12px;
+            background: #111
+        }
+
+        .name {
+            font-weight: 600
+        }
+
+        .code {
+            font-family: monospace;
+            font-size: 13px
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Paleta minimalista para web</h1>
+        <p>Diseño con fondo oscuro, superficies neutras y luz fría como acento.</p>
+    </header>
+
+    <section class="grid">
+        <div class="swatch">
+            <div class="chip fondo"></div>
+            <div class="meta"><span class="name">Fondo</span><span class="code">#0A0A0A</span></div>
+        </div>
+        <div class="swatch">
+            <div class="chip superficie"></div>
+            <div class="meta"><span class="name">Superficie</span><span class="code">#2C2C2C</span></div>
+        </div>
+        <div class="swatch">
+            <div class="chip texto"></div>
+            <div class="meta"><span class="name">Texto</span><span class="code">#B0B0B0</span></div>
+        </div>
+        <div class="swatch">
+            <div class="chip secundario"></div>
+            <div class="meta"><span class="name">Texto secundario</span><span class="code">#808080</span></div>
+        </div>
+        <div class="swatch">
+            <div class="chip destacado"></div>
+            <div class="meta"><span class="name">Destacadoo</span><span class="code">#E6E6E6</span></div>
+        </div>
+        <div class="swatch">
+            <div class="chip azul"></div>
+            <div class="meta"><span class="name">Acento azul</span><span class="code">#6CAEDB</span></div>
+        </div>
+        <div class="swatch">
+            <div class="chip cian"></div>
+            <div class="meta"><span class="name">Acento cian</span><span class="code">#4DD6D6</span></div>
+        </div>
+    </section>
+</body>
+
+</html>
