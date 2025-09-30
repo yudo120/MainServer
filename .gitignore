@@ -1,0 +1,50 @@
+# Logs y archivos temporales
+*.log
+*.tmp
+*.temp
+
+# Base de datos SQLite (puede contener datos sensibles)
+public/api/users.sqlite
+public/api/logs/
+
+# Archivos de configuración local que pueden contener credenciales
+*.local.php
+.env
+.env.local
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Archivos de respaldo
+*.bak
+*.backup
+
+# Dependencias (si usas composer)
+vendor/
+composer.lock
+
+# Archivos de node_modules (si usas npm)
+node_modules/
+
+# Archivos de caché
+cache/
+tmp/
+
+# Archivos sensibles específicos del proyecto
+config/secrets.php
+private_keys/
+*.key
+*.pem
+
+# Archivos de pruebas
+test_output/
+test_results/

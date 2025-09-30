@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Quita la extensión .html de la URL
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(servicios|tools|docs)/?$ pages/$1.html [L]
+
+# Opcional: redirige /pages/servicios.html a /pages/servicios
+RewriteCond %{THE_REQUEST} /pages/([a-zA-Z0-9_-]+)\.html [NC]
+RewriteRule ^pages/([a-zA-Z0-9_-]+)\.html$ /pages/$1 [R=301,L]

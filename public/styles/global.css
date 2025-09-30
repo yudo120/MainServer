@@ -1,0 +1,61 @@
+body {
+	margin: 0;
+	font-family: 'Segoe UI', Arial, sans-serif;
+	background: #fafbfc;
+}
+.navbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: #fff;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+	padding: 0 32px;
+	height: 56px;
+}
+.navbar-left {
+	display: flex;
+	align-items: center;
+}
+.brand {
+	font-weight: 600;
+	font-size: 1.2rem;
+	color: #222;
+	margin-right: 32px;
+	letter-spacing: 1px;
+	text-decoration: none;
+	cursor: pointer;
+}
+.nav-links {
+	display: flex;
+	gap: 20px;
+}
+.nav-links a {
+	text-decoration: none;
+	color: #444;
+	font-size: 1rem;
+	transition: color 0.2s;
+}
+.nav-links a:hover {
+	color: #0078d4;
+}
+.login-btn {
+	background: #0078d4;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	padding: 8px 20px;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+.login-btn:hover {
+	background: #005fa3;
+}
+#login-btn {
+	/* Aquí puedes personalizar el botón Login individualmente */
+}
+main {
+	padding: 48px 16px;
+	text-align: center;
+	color: #333;
+}
